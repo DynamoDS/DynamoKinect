@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamoKinect", "DynamoKinect\DynamoKinect.csproj", "{B85944D9-B9F8-442D-8E7D-3D3D85045444}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamoKinectCore", "DynamoKinectCore\DynamoKinectCore.csproj", "{3C962658-07F6-433B-AF09-FB9B798AE78C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{B85944D9-B9F8-442D-8E7D-3D3D85045444}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B85944D9-B9F8-442D-8E7D-3D3D85045444}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B85944D9-B9F8-442D-8E7D-3D3D85045444}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C962658-07F6-433B-AF09-FB9B798AE78C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C962658-07F6-433B-AF09-FB9B798AE78C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C962658-07F6-433B-AF09-FB9B798AE78C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C962658-07F6-433B-AF09-FB9B798AE78C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

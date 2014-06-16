@@ -13,6 +13,7 @@ using Dynamo.UI;
 using Microsoft.Research.Kinect.Nui;
 using ProtoCore.AST.AssociativeAST;
 using Point = Autodesk.DesignScript.Geometry.Point;
+using DynamoKinectCore;
 
 namespace DynamoKinect
 {
@@ -41,7 +42,7 @@ namespace DynamoKinect
         }
 
         public override IEnumerable<AssociativeNode> BuildOutputAst(List<AssociativeNode> inputAstNodes)
-        {
+        {   
             // Get skeleton data.
             var allSkeletons = runtime.SkeletonEngine.GetNextFrame(0);
 
@@ -165,7 +166,7 @@ namespace DynamoKinect
             {
                 // Use first Kinect
                 // Initialize to return both Dpeth & Skeleton
-                runtime = Runtime.Kinects[0];         
+                runtime = Runtime.Kinects[0];      
                 runtime.Initialize(RuntimeOptions.UseDepth | RuntimeOptions.UseSkeletalTracking);
             }
         }
