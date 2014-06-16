@@ -35,10 +35,11 @@
     </Reference>
     <Reference Include="DynamoCore">
       <HintPath>..\..\lib\DynamoCore.dll</HintPath>
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Practices.Prism">
       <HintPath>..\..\lib\Microsoft.Practices.Prism.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Research.Kinect, Version=1.0.0.45, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -48,14 +49,15 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="ProtoCore">
       <HintPath>..\..\lib\ProtoCore.dll</HintPath>
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="ProtoGeometry">
       <HintPath>..\..\lib\ProtoGeometry.dll</HintPath>
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ProtoInterface">
       <HintPath>..\..\lib\ProtoInterface.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

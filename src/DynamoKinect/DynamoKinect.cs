@@ -33,6 +33,8 @@ namespace DynamoKinect
         {
             OutPortData.Add(new PortData("right hand", "The 2D point of the right hand."));
             OutPortData.Add(new PortData("left Hand", "The 2D point of the left hand."));
+            ArgumentLacing = LacingStrategy.Disabled;
+
             RegisterAllPorts();
 
             SetupKinect();
@@ -40,9 +42,6 @@ namespace DynamoKinect
 
         public override IEnumerable<AssociativeNode> BuildOutputAst(List<AssociativeNode> inputAstNodes)
         {
-            // Update the image
-            //image1.Source = runtime.DepthStream.GetNextFrame(0).ToBitmapSource();
-
             // Get skeleton data.
             var allSkeletons = runtime.SkeletonEngine.GetNextFrame(0);
 
@@ -58,8 +57,8 @@ namespace DynamoKinect
 
                 if (skeleton != null)
                 {
-                    var rightHand = skeleton.Joints[JointID.HandRight];
-                    var leftHand = skeleton.Joints[JointID.HandRight];
+                    var rightHand = skeleton.Joints[JointID.HandRight].ScaleTo(1,1);
+                    var leftHand = skeleton.Joints[JointID.HandLeft].ScaleTo(1,1);
 
                     var rx = AstFactory.BuildDoubleNode(rightHand.Position.X);
                     var ry = AstFactory.BuildDoubleNode(rightHand.Position.Y);
@@ -75,7 +74,7 @@ namespace DynamoKinect
 
                     leftHandNode = AstFactory.BuildFunctionCall(
                         new Func<double, double, double, Point>(Point.ByCoordinates),
-                        new List<AssociativeNode> { lx, ly, lz });   
+                        new List<AssociativeNode> { lx, ly, lz });
                 }
             }
             else
@@ -140,11 +139,7 @@ namespace DynamoKinect
             view.PresentationGrid.Children.Add(image1);
             view.PresentationGrid.Visibility = Visibility.Visible;
 
-            //view.Width = width + 120;// 450;
-            //view.Height = height + 5;
-
             runtime.DepthFrameReady += new EventHandler<ImageFrameReadyEventArgs>(RuntimeDepthFrameReady);
-            runtime.SkeletonFrameReady += new EventHandler<SkeletonFrameReadyEventArgs>(RuntimeSkeletonFrameReady);
             runtime.DepthStream.Open(ImageStreamType.Depth, 2, ImageResolution.Resolution320x240, ImageType.Depth);
         }
 
@@ -154,19 +149,6 @@ namespace DynamoKinect
         {
             var planarImage = e.ImageFrame.Image;
             image1.Source = e.ImageFrame.ToBitmapSource();
-        }
-
-        void RuntimeSkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
-        {
-            //SkeletonFrame allSkeletons = e.SkeletonFrame;
-
-            ////get the first tracked skeleton
-            //SkeletonData skeleton = (from s in allSkeletons.Skeletons
-            //                         where s.TrackingState == SkeletonTrackingState.Tracked
-            //                         select s).FirstOrDefault();
-
-            //Joint HandRight = skeleton.Joints[JointID.HandRight];
-            //rightHandLoc = new XYZ(HandRight.Position.X, HandRight.Position.Y, HandRight.Position.Z);
         }
 
         #endregion
