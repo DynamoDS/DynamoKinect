@@ -33,7 +33,6 @@ namespace DynamoKinect
         {
             OutPortData.Add(new PortData("right hand", "The 2D point of the right hand."));
             OutPortData.Add(new PortData("left Hand", "The 2D point of the left hand."));
-
             RegisterAllPorts();
 
             SetupKinect();
@@ -139,6 +138,7 @@ namespace DynamoKinect
             image1.Source = wbitmap;
 
             view.PresentationGrid.Children.Add(image1);
+            view.PresentationGrid.Visibility = Visibility.Visible;
 
             //view.Width = width + 120;// 450;
             //view.Height = height + 5;
